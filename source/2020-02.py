@@ -15,6 +15,7 @@ fix_grid = 4
 
 cal= calendar.Calendar()
 months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+monthsInPolish = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"]
 month = 12
 year = 2022
 
@@ -40,14 +41,16 @@ grid() # Toggle for grid view
 stroke(None)
 
 fontSize(F)
+openTypeFeatures(ss01=True, ss02=True)
 font("Inter-ExtraBold")
-text(months[month - 1], (M-4, fix_header+M+(F*8)))
-tracking(-4)
-text(str(year), (M-4, fix_header+M+(F*7)))
+text(months[month - 1], (M-4, fix_header+M+(F*7)))
+text(monthsInPolish[month - 1], (M-4, fix_header+M+(F*8)))
+
 
 fontSize(F/4)
 font("Inter-Regular")
 tracking(None)
+text("Mon", ((M+2)+(F*0), (M+(F*7))-18))
 text("Mon", ((M+2)+(F*0), (M+(F*7))-18))
 text("Tue", ((M+2)+(F*1), (M+(F*7))-18))
 text("Wed", ((M+2)+(F*2), (M+(F*7))-18))
