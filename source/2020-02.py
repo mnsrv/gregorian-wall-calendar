@@ -1,7 +1,6 @@
 # RENDER THIS DOCUMENT WITH DRAWBOT: http://www.drawbot.com
 
 from drawBot import *
-import calendar
 import math
 
 # [W]IDTH, [H]EIGHT, [M]ARGIN, [F]FONT-SIZE
@@ -13,17 +12,11 @@ W,H,M,F = 594,789,24,78
 fix_header = 24
 fix_grid = 4
 
-cal= calendar.Calendar()
-months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-monthsInPolish = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"]
-month = 12
-year = 2022
-
 # GRID
 def grid():
-    lineJoin("round")
-    stroke(0.8)
+    stroke(0)
     strokeWidth(1)
+    lineCap("round")
     stpX, stpY = 0, 0
     incX, incY = 78, 78
     for x in range(8):
@@ -35,22 +28,22 @@ def grid():
                 (W-(M), (M)+stpY))
         stpY += incY
 
-# MAIN
 size("A4")
 grid() # Toggle for grid view
 stroke(None)
 
-fontSize(F)
-openTypeFeatures(ss01=True, ss02=True)
+fontSize(F*2.35)
+    
 font("Inter-ExtraBold")
-text(months[month - 1], (M-4, fix_header+M+(F*7)))
-text(monthsInPolish[month - 1], (M-4, fix_header+M+(F*8)))
+#text("2", (M+(F*5.6), M+(F*7.24)))
 
+fontSize(F)
+text("February", (M-4, fix_header+M+(F*8)))
+tracking(-6)
+text("2020", (M-4, fix_header+M+(F*7)))
 
 fontSize(F/4)
-font("Inter-Regular")
 tracking(None)
-text("Mon", ((M+2)+(F*0), (M+(F*7))-18))
 text("Mon", ((M+2)+(F*0), (M+(F*7))-18))
 text("Tue", ((M+2)+(F*1), (M+(F*7))-18))
 text("Wed", ((M+2)+(F*2), (M+(F*7))-18))
@@ -59,14 +52,39 @@ text("Fri", ((M+2)+(F*4), (M+(F*7))-18))
 text("Sat", ((M+2)+(F*5), (M+(F*7))-18))
 text("Sun", ((M+2)+(F*6), (M+(F*7))-18))
 
-row = 6
-for x in cal.itermonthdays2(year, month):
-    day = x[0]
-    weekday = x[1]
-    if day == 0:
-        continue
-    text(str(day), ((M+2)+(F*weekday), (M+(F*row))-18))
-    if weekday == 6:
-        row = row - 1
+text("1",   ((M+2)+(F*5), (M+(F*6))-18))
+text("2",   ((M+2)+(F*6), (M+(F*6))-18))
 
-saveImage('../pdfs/{}-{}.pdf'.format(year, month))
+text("3",   ((M+2)+(F*0), (M+(F*5))-18))
+text("4",   ((M+2)+(F*1), (M+(F*5))-18))
+text("5",   ((M+2)+(F*2), (M+(F*5))-18))
+text("6",   ((M+2)+(F*3), (M+(F*5))-18))
+text("7",   ((M+2)+(F*4), (M+(F*5))-18))
+text("8",   ((M+2)+(F*5), (M+(F*5))-18))
+text("9",   ((M+2)+(F*6), (M+(F*5))-18))
+
+text("10",  ((M+2)+(F*0), (M+(F*4))-18))
+text("11",  ((M+2)+(F*1), (M+(F*4))-18))
+text("12",  ((M+2)+(F*2), (M+(F*4))-18))
+text("13",  ((M+2)+(F*3), (M+(F*4))-18))
+text("14",  ((M+2)+(F*4), (M+(F*4))-18))
+text("15",  ((M+2)+(F*5), (M+(F*4))-18))
+text("16",  ((M+2)+(F*6), (M+(F*4))-18))
+
+text("17",  ((M+2)+(F*0), (M+(F*3))-18))
+text("18",  ((M+2)+(F*1), (M+(F*3))-18))
+text("19",  ((M+2)+(F*2), (M+(F*3))-18))
+text("20",  ((M+2)+(F*3), (M+(F*3))-18))
+text("21",  ((M+2)+(F*4), (M+(F*3))-18))
+text("22",  ((M+2)+(F*5), (M+(F*3))-18))
+text("23",  ((M+2)+(F*6), (M+(F*3))-18))
+
+text("24",  ((M+2)+(F*0), (M+(F*2))-18))
+text("25",  ((M+2)+(F*1), (M+(F*2))-18))
+text("26",  ((M+2)+(F*2), (M+(F*2))-18))
+text("27",  ((M+2)+(F*3), (M+(F*2))-18))
+text("28",  ((M+2)+(F*4), (M+(F*2))-18))
+text("29",  ((M+2)+(F*5), (M+(F*2))-18))
+
+
+saveImage('../pdfs/{}-{}.jpg'.format(2020, 2))
